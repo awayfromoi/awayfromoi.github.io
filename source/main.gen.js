@@ -86,6 +86,7 @@ function rec_proc(s){
         <link rel="stylesheet" type="text/css" href="wycero-1.css">
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+	<link href="icon.png" rel="Shortcut Icon">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/contrib/auto-render.js"></script>
@@ -105,6 +106,8 @@ function rec_proc(s){
 <div id="gitalk-container"></div>`;
 	ret+=`
 	<script>
+
+if(location.href.substr(0,5)=="file:"||location.hostname.substr(0,3)=="127");else{
 const gitalk = new Gitalk({
   clientID: '133aa544ab7aacc0e908',
   clientSecret: 'fe362d1dd84949381a7cb9bc6701219881316394',
@@ -114,8 +117,8 @@ const gitalk = new Gitalk({
   id: location.pathname,      
   distractionFreeMode: false
 })
-if(location.href.substr(0,5)=="file:"||location.hostname.substr(0,3)=="127");
-else gitalk.render('gitalk-container')
+gitalk.render('gitalk-container')
+}
 	</script>
 	<div id="gitalk-container"></div>
 	<footer>
