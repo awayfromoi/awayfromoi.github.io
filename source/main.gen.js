@@ -101,6 +101,7 @@ function rec_proc(s){
         else ret+=tt;
         if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
         ret+=`
+<div id="gitalk-container"></div>
 	<script>
 const gitalk = new Gitalk({
   clientID: '133aa544ab7aacc0e908',
