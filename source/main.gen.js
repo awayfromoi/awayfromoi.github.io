@@ -83,6 +83,8 @@ function rec_proc(s){
             let ret="<!DOCTYPE html><html><title>"+tit+` - Wycero's Blog</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="wycero-1.css">
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/contrib/auto-render.js"></script>
@@ -98,7 +100,21 @@ function rec_proc(s){
         if(tit!="Home")ret+=`<div class="article">`+tt+`</div>`;
         else ret+=tt;
         if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
-        ret+=`<footer>
+        ret+=`
+	<script>
+const gitalk = new Gitalk({
+  clientID: '133aa544ab7aacc0e908',
+  clientSecret: 'fe362d1dd84949381a7cb9bc6701219881316394',
+  repo: 'https://github.com/awayfromoi/afogi-comment/',
+  owner: 'ferrumcccp',
+  admin: ['ferrumcccp'],
+  id: location.pathname,      
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+	</script>
+	<div id="gitalk-container"></div>
+	<footer>
         <script src="wycero-1.js"></script>
         <p>Copyright `+new Date().getFullYear()+` wycero</p>
         <p>Powered By:
@@ -138,8 +154,8 @@ function rec_proc(s){
         case"urlbox":{
             let target="";
 		    if(typeof(s[1])=="undefined")target=ttraw;else target=s[1];
-		    if(s[0]=="url")return"<a href=\""+escape(target)+"\">"+tt+"</a>";
-            else return"<div class=\"posti\"><a href=\""+escape(target)+"\">"+tt+"</a></div>";
+		    if(s[0]=="url")return"<a href=\""+target+"\">"+tt+"</a>";
+            else return"<div class=\"posti\"><a href=\""+target+"\">"+tt+"</a></div>";
 	    }
         case"quote":{
             if(typeof(s[1])=="undefined")return"<blockquote>"+tt+"</blockquote>";
@@ -166,7 +182,7 @@ function arr_proc(s){
     return rec_proc(s);
 }
 function proc(s,filename){
-s="[h1]AFO[/h1]";
+    //s="[h1]AFO[/h1]";
     ss="";cur=0;len=0;
     raw_mode=false;
     sta=["root"];
