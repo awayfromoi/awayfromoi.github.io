@@ -14,7 +14,7 @@ code{
 	margin:0px;
         flex-direction:row;
         width:100vw;
-        height:2.6em;
+        height:2em;
         background-color:#0c3;
         display:flex;
 	z-index:1010;
@@ -33,7 +33,7 @@ a.tpi.icon-top{flex:1}
 	border-color:#3ec0ff;
 }
 .tpi{
-	padding-top:0.05em;font-size:200%;
+	padding-top:auto;padding-bottom:auto;font-size:1em;
 }
 a{color:#008420;/*text-decoration:none;*/}
 .posti{color:#008420;text-decoration:none;}
