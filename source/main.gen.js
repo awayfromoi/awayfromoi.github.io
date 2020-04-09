@@ -107,8 +107,8 @@ const gitalk = new Gitalk({
   clientID: '133aa544ab7aacc0e908',
   clientSecret: 'fe362d1dd84949381a7cb9bc6701219881316394',
   repo: 'afogi-comment',
-  owner: 'ferrumcccp',
-  admin: ['ferrumcccp'],
+  owner: 'awayfromoi',
+  admin: ['awayfromoi','ferrumcccp'],
   id: location.pathname,      
   distractionFreeMode: false
 })
