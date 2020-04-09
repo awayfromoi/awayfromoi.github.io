@@ -21,7 +21,7 @@ code{
 	box-shadow:0 0 4px 4px /*rgb(42,142,209)*/rgb(0,0,10,0.2);
 }
 .tpi{flex:5;}
-a.tpi.icon-top{flex:1}
+a.tpi.icon-top{flex:2}
 .rot{transform:rotate(90deg);}
 .tpi{
 	text-align:center;
