@@ -82,6 +82,7 @@ function rec_proc(s){
             }
             let ret="<!DOCTYPE html><html><title>"+tit+` - Wycero's Blog</title>
         <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" type="text/css" href="wycero-1.css">
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
