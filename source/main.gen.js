@@ -298,6 +298,6 @@ for(let i=0;i<curdir.length;i++){
         fs.writeFileSync("../blog/"+curdir[i],fs.readFileSync(curdir[i]));
     }else console.log("Skipping: "+curdir[i]);
 }
-index_page="@{\"title\":\"Home\"}\n[img]juruo.svg[/img]\n";
+index_page="@{\"title\":\"Home\"}\n";
 for(let i=0;i<pages.length;i++)index_page+="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
 fs.writeFileSync("../blog/index.html",proc(index_page,""));
