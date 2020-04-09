@@ -106,7 +106,7 @@ function rec_proc(s){
 const gitalk = new Gitalk({
   clientID: '133aa544ab7aacc0e908',
   clientSecret: 'fe362d1dd84949381a7cb9bc6701219881316394',
-  repo: 'https://github.com/awayfromoi/afogi-comment/',
+  repo: 'afogi-comment',
   owner: 'ferrumcccp',
   admin: ['ferrumcccp'],
   id: location.pathname,      
