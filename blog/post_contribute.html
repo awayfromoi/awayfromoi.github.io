@@ -30,7 +30,8 @@ const gitalk = new Gitalk({
   id: location.pathname,      
   distractionFreeMode: false
 })
-gitalk.render('gitalk-container')
+if(location.href.substr(0,5)=="file:"||location.hostname.substr(0,3)=="127");
+else gitalk.render('gitalk-container')
 	</script>
 	<div id="gitalk-container"></div>
 	<footer>

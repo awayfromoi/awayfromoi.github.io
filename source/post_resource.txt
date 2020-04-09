@@ -1,1 +1,12 @@
-@{"title":"资源帖","description":""}
+@{"title":"资源帖/Resources","description":""}
+[h2]回归文化课/Returning to classes[/h2]
+[url="https://jyb.icu"]Memset0のJYB.icu和文化课资源[/url]
+[h2]寻求帮助/Seeking Help[/h2]
+[url="http://www.crisis.org.cn/"]北京心理危机研究与干预中心[/url]
+[url="https://www.blurtitout.org/2015/01/01/want-to-end-it-all-please-read-this/"]想要一了百了？戳这里（英文）/Want to end it all? Please read this.[/url]
+[h3]危机热线/Crisis Hotline[/h3]
+[url="tel:18002738255"]United States[/url]
+[url="tel:01082951332"]北京（全国可拨）[/url]
+[url="tel:4001619995"]上海（全国可拨）[/url]
+[url="tel:0925250111"]Suomi(Suomen Kieli)[/url]
+[url="tel:0925250113"]Finland(English)[/url]

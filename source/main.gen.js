@@ -102,7 +102,8 @@ function rec_proc(s){
         else ret+=tt;
         if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
         ret+=`
-<div id="gitalk-container"></div>
+<div id="gitalk-container"></div>`;
+	ret+=`
 	<script>
 const gitalk = new Gitalk({
   clientID: '133aa544ab7aacc0e908',
@@ -113,7 +114,8 @@ const gitalk = new Gitalk({
   id: location.pathname,      
   distractionFreeMode: false
 })
-gitalk.render('gitalk-container')
+if(location.href.substr(0,5)=="file:"||location.hostname.substr(0,3)=="127");
+else gitalk.render('gitalk-container')
 	</script>
 	<div id="gitalk-container"></div>
 	<footer>
