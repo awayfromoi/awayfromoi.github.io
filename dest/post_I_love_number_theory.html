@@ -1,0 +1,125 @@
+<!--
+数论-从入门到出门
+欢迎来到数论
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>数论-从入门到出门 -- Wycero's blog</title>
+<link rel="stylesheet" type="text/css" href="wycero-1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/contrib/auto-render.js"></script>
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">  
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
+<script >hljs.initHighlightingOnLoad();</script>  
+<link href="icon.png" rel="Shortcut Icon">
+</head>
+<body id="body">
+<div class="top-bar">
+<a href="index.html" class="tpi icon-top"><img src="home.svg" class="svg"></img></a>
+<p class="tpi">数论-从入门到出门</p>
+<a href="#" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
+<br><br><br><br>
+<p><h1>欢迎来到数论</h1> </p>
+<p>既然是数论杂谈，就从一些基本概念讲起吧。dalao自行跳过 </p>
+<p><h2>基本定义</h2> </p>
+<p>整除：若$p,q,\frac q p\in \mathbb{Z}$，则$p\mid q$ </p>
+<p>同余：若$p,q\in\mathbb{Z},r\in\mathbb{Z^+},r\mid p-q$则$p\equiv q (\mathrm{mod}\ r)$ </p>
+<p>质数：若$p\in(1,+\infty)\cap\mathbb{Z^+},\forall q\in(1,p)\cap\mathbb{Z^+},q\nmid p$则$p$为质数 </p>
+<p>合数：若$p\in(1,+\infty)\cap\mathbb{Z^+},\exists q\in(1,p)\cap\mathbb{Z^+},q\mid p$则$p$为合数 </p>
+<p>gcd：$\mathrm{gcd}(x_1,x_2,\cdots x_n)=\max\{p\in\mathbb{N}{\large\mid}p\mid x_1,p\mid x_2\cdots p\mid x_n\}$ </p>
+<p>lcm：$\mathrm{lcm}(x_1,x_2,\cdots x_n)=\min\{p\in\mathbb{N}{\large\mid}x_1\mid p,x_2\mid p\cdots x_n\mid p\}$ </p>
+<p><h2>基本定理</h2> </p>
+<p>若$p|q,q|r$则$p|r$（显然） </p>
+<p>[裴蜀定理]$gcd(a,b)|c\Leftrightarrow\exists x,y$使得$ax+by=c$ </p>
+<p></p><blockquote><p> </p>
+<p>必要性显然，以下证充分性。 </p>
+<p>若$b=0$则得证。 </p>
+<p>否则 </p>
+<p>$ax+[a(\lfloor b/a\rfloor)+(b\mod a)]y=c$ </p>
+<p>$a(x+\lfloor b/a\rfloor y)+(b\mod a)y=c$ </p>
+<p>由归纳法得证。 </p>
+<p></p></blockquote></p> </p>
+<p>若$p|qr,p\perp q$则$p|r$  </p>
+<p></p><blockquote><p> </p>
+<p>$\exists x,y$使得$px+qy=1$ </p>
+<p>$rpx+rqy=r$ </p>
+<p>$\because p|qr,p|pr$ </p>
+<p>$\therefore p|r$ </p>
+<p></p></blockquote></p> </p>
+<p>若$x$为合数，则$\exists$质数$p$，$p|x$（由合数定义及归纳法） </p>
+<p>唯一分解定理：任何正整数能唯一分解成质数的乘积。 </p>
+<p></p><blockquote><p> </p>
+<p>反证，令$N=p_1p_2\cdots p_n=p'_1p'_2\cdots p'_m$ </p>
+<p>约掉重复的质因数后，设剩下的等式为$P_1P_2\cdots P_x=P'_1P'_2\cdots P'_y$ </p>
+<p>$\because P_1|P'_1P'_2\cdots P'_n$又$P_1\perp P'_1\cdots P_1\perp P'_n$ </p>
+<p>$\therefore$矛盾 </p>
+<p></p></blockquote><p> </p>
+<p>费马小定理：若$p$为质数$p\nmid x,x^{p-1}\equiv x(\mathrm{mod}\ p)$ </p>
+<p>欧拉定理：若$p\perp x,x^{\phi(p)}\equiv x(\mathrm{mod}\ p)$ </p>
+<p>Lucas定理：若$p$为质数$C^n_m\equiv C^{\lfloor n/p\rfloor}_{\lfloor m/p\rfloor}C^{n\mod p}_{m\mod p}(\mathrm{mod}\ p)$ </p>
+<p><h1>基本算法</h1> </p>
+<p><h2>扩展欧几里德算法</h2> </p>
+<p>参见裴蜀定理的证明 </p>
+<p><h2>BSGS</h2> </p>
+<p>已知$a,b,c$求$x$使$a^x=b(\mathrm{mod}\ c)$ </p>
+<p>取$m=\lceil\sqrt{C}\rceil$计算$a^m,a^{2m},a^{3m},\cdots$加入哈希表 </p>
+<p>计算$b^1,b^2,\cdots b^m$上哈希表查询 </p>
+<p><h1> 咕咕咕咕咕咕！</h1> </p>
+<p><h1> 目标：狄利克雷生成函数</h1> </p>
+<p>如果你去逛OEIS<del>找规律</del>，你也许会注意到一个东西： </p>
+<p> </p>
+<br>
+<p>Dirichlet g.f.: 啥啥啥 </p>
+<p> </p>
+<br>
+<p>这就是狄利克雷生成函数（g.f=Generating function） </p>
+<p>$L(s,\chi)=\sum\limits_{i=1}^{\infty} \frac{\chi_i}{i^s}(s\in\mathbb{C})$为数列$\chi$的狄利克雷生成函数（例如$\mu$的生成函数为$\sum\limits_{i=1}^\infty \frac{\mu_i}{i^s}$） </p>
+<p><h2> 黎曼$\zeta$函数</h2> </p>
+<p>$\zeta(s)=\sum\limits_{i=1}^{\infty}\frac 1 {i^s} (s\in\mathbb{C})$ </p>
+<p>黎曼$\zeta$函数就是$\chi=1$时的L函数。 </p>
+<p>狄利克雷生成函数常常写成$\zeta$的表达式形式。 </p>
+<p><h2> 见证奇迹的时刻到了！</h2> </p>
+<p>数列对应位置相加$\to$生成函数相加 </p>
+<p>狄利克雷卷积$\to$生成函数相乘 </p>
+<p>狄利克雷卷积意义的逆元$\to$生成函数取倒数 </p>
+<p><h2> 常见数列的生成函数</h2> </p>
+<p>单位元$e:1$ </p>
+<p>$1:\zeta(s)$ </p>
+<p>$\mathrm{id}_k:\zeta(s-k)$ </p>
+<p>$\mu:\frac 1 {\zeta(s)}$ </p>
+<p>$\mu^2:\frac{\zeta(s)}{\zeta(2s)}$ </p>
+<p>$\phi:\frac{\zeta(s-1)}{\zeta(s)}$ </p>
+<p>$\sigma_0:\zeta(s)^2$ </p>
+<p>$\sigma_k:\zeta(s)\zeta(s-k)$ </p>
+<p>$\{a_x=[x\text{为完全平方数}]\}:\zeta(2s)$ </p>
+<p><h2> 这里面还有更深入的理论，可是我太蒻了，不会。</h2> </p>
+<p>虽然这只是解析数论的一点皮毛，但是它已经优美得令人折服。更可怕的是，数学家可以利用这样的数学工具，用代数手段干数论问题。 </p>
+<p>和普通生成函数对应FFT不同，狄利克雷生成函数没啥明显的算法意义。 </p>
+<p>我出门了。我好菜。 </p>
+<p><del>不过，我会科学用OEIS了</del></p>
+<footer>
+<script src="wycero-1.js"></script>
+<p>Copyright 2019 wycero</p>
+<p>Powered By: 
+<a href="http://php.net">PHP</a>
+<a href="https://katex.org">$\KaTeX$</a>
+<a href="https://highlightjs.org/">Highlightjs</a></p>
+<p>Hosted On coding.me</p>
+</footer>
+<script>
+    renderMathInElement(document.body,
+   {
+              delimiters: [
+                  {left: "$$", right: "$$", display: true},
+                  {left: "$", right: "$", display: false},
+                  {left: "\\(", right: "\\)", display: false}
+              ]
+          }
+  );
+</script>
+
+</body>
+</html>
