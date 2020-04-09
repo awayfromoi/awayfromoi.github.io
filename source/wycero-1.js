@@ -13,8 +13,6 @@ function ispc() {
 }
 tabcon=document.getElementById("table-content");
 if(!ispc()){
-	document.body.style.fontSize="48px";
-    tabcon.style.width=tabcon.style.maxWidth="70%";
 }
 tabcon.style.left="-70%";
 function hit_content(){
