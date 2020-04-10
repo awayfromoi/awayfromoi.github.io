@@ -306,13 +306,23 @@ for(let i=0;i<curdir.length;i++){
     }else console.log("Skipping: "+curdir[i]);
 }
 // Sorry4hardcoding
-index_page=`@{"title":"Home"}
+index_page=`@{"title":"首页"}
 [h1]Away from OI[/h1]
-[b]Being away from OI may seem like great loss, but you don't have face it alone[/b]
 [b]OI退役也许让你失去了很多，但是你不必独自面对[/b]
-Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
-You can also have a look at this website. Even though this website is a work in progress, I hope you can get help from it.
+您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
 `;
-for(let i=0;i<pages.length;i++)index_page+="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
+indexen=`@{"title":"Home"}
+[h1]Away from OI[/h1]
+[b]Being away from OI may seem to be great loss, but you don't have face it alone[/b]
+Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
+You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
+`
+for(let i=0;i<pages.length;i++){
+	let ub="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
+	if(pages[i].filename.startWith("en"))indexen+=ub;
+	else if(pages[i].filename.startWith("multi")){index_page+=ub;indexen+=ub;}
+	else index_page+=ub;
+}
 fs.writeFileSync("../blog/index.html",proc(index_page,""));
+fs.writeFileSync("../blog/indexen.html",proc(indexen,""));
