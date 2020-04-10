@@ -80,7 +80,7 @@ function rec_proc(s){
                 let lev=bookmarx[i][0];let v=bookmarx[i][1];
                 bookht+="<a href=\"#bm"+(i+1)+"\" onclick=\"javascript:hit_content();\">"+rep_str("&nbsp;",6*(lev-1))+v.trim()+"</a><br>";
             }
-            let ret="<!DOCTYPE html><html><title>"+tit+` - Wycero's Blog</title>
+            let ret="<!DOCTYPE html><html><title>"+tit+` - Away from OI</title>
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" type="text/css" href="wycero-1.css">
@@ -305,6 +305,14 @@ for(let i=0;i<curdir.length;i++){
         fs.writeFileSync("../blog/"+curdir[i],fs.readFileSync(curdir[i]));
     }else console.log("Skipping: "+curdir[i]);
 }
-index_page="@{\"title\":\"Home\"}\n";
+// Sorry4hardcoding
+index_page=`@{"title":"Home"}
+[h1]Away from OI[/h1]
+[b]Being away from OI may seem like great loss, but you don't have face it alone[/b]
+[b]OI退役也许让你失去了很多，但是你不必独自面对[/b]
+Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
+告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
+You can also have a look at this website. Even though this website is a work in progress, I hope you can get help from it.
+`;
 for(let i=0;i<pages.length;i++)index_page+="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
 fs.writeFileSync("../blog/index.html",proc(index_page,""));
