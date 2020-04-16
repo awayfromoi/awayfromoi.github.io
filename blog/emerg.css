@@ -1,6 +1,6 @@
 body{
 	background-color:#300000;
-	color:red;
+	color:#ff7647;
 	font-size:16px;
 	font-family:sans-serif;
 }
@@ -139,7 +139,7 @@ code{
 .article,footer{
 	background-color:darkred;
 	margin-top:5px;margin-bottom:25px;
-	border-color:#00cc3352;
+	border-color:orange;
 	border-width:5px;
 	border-style:solid;
 	padding:8px;
