@@ -97,7 +97,9 @@ function rec_proc(s){
         <script >hljs.initHighlightingOnLoad();</script>
         <body id="body">
         <div class="top-bar">
-        <a href="index.html" class="tpi icon-top"><img src="home.svg" class="svg"></img></a>
+        <a href="`;
+	if(meta.filename&&(meta.filename.startWith("en")||meta.filename.startWith("indexen")))ret+="indexen.html";else ret+="index.html"; 
+	ret+=`" class="tpi icon-top"><img src="home.svg" class="svg"></img></a>
         <p class="tpi">`+tit+`</p>
         <a href="javascript:;" onclick="javascript:hit_content();" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
         <br><br><br><br>`;
@@ -327,5 +329,5 @@ for(let i=0;i<pages.length;i++){
 	else if(pages[i].filename.startWith("multi")){index_page+=ub;indexen+=ub;}
 	else index_page+=ub;
 }
-fs.writeFileSync("../blog/index.html",proc(index_page,""));
-fs.writeFileSync("../blog/indexen.html",proc(indexen,""));
+fs.writeFileSync("../blog/index.html",proc(index_page,"index.html"));
+fs.writeFileSync("../blog/indexen.html",proc(indexen,"indexen.html"));
