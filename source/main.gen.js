@@ -176,6 +176,7 @@ gitalk.render('gitalk-container')
         case"raw_html":{return ttraw;}
         case"code":{return "<pre><code>"+tt+"</code></pre>"}
         case"*":{return;}
+        case"rem":{return;}
         case"list":{
             if(typeof(s[1])=="undefined")return"<ul>"+tt+"</ul>";
             else return"<ol start=\""+s[1]+"\">"+tt+"</ol>";
