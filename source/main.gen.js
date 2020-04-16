@@ -321,6 +321,7 @@ Tell your parents and teachers about what you are going through and ask them for
 You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
 `
 for(let i=0;i<pages.length;i++){
+	if(pages[i].hidden)continue;
 	let ub="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
 	if(pages[i].filename.startWith("en"))indexen+=ub;
 	else if(pages[i].filename.startWith("multi")){index_page+=ub;indexen+=ub;}
