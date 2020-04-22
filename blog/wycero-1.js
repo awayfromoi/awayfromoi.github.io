@@ -11,17 +11,18 @@ function ispc() {
   }
   return flag;
 }
+$(".posti-group>.posti").removeClass("alone");
 tabcon=document.getElementById("table-content");
 if(!ispc()){
-tabcon.style.width=tabcon.style.maxWidth="70%";
+if(tabcon)tabcon.style.width=tabcon.style.maxWidth="70%";
 }
-tabcon.style.left="-70%";
+if(tabcon)tabcon.style.right="-70%";
 function open_content(){
-    tabcon.style.left="0";
+    if(tabcon)tabcon.style.right="0%";
 }
 function close_content(){
-    tabcon.style.left="-70%";
+    if(tabcon)tabcon.style.right="-70%";
 }
 function off_content(){
-    tabcon.style.opacity="0";
+    if(tabcon)tabcon.style.opacity="0";
 }

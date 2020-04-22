@@ -84,7 +84,7 @@ function rec_proc(s){
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />`
         ret+=`<link rel="stylesheet" type="text/css" href="emerg.css">`;
-	ret+=`<link rel="stylesheet" type="text/css" href="wycero-1.css">`
+	ret+=`<link rel="stylesheet" type="text/css" href="ferrous.css">`
 	ret+=`
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -94,6 +94,7 @@ function rec_proc(s){
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/contrib/auto-render.js"></script>
         <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
         <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+        <script src="https://ajax.proxy.ustclug.org/ajax/libs/jquery/3.1.0/jquery.min.js">
         <script >hljs.initHighlightingOnLoad();</script>
         `
 	if(meta.emerg)ret+=`<body id="body" class="emerg">`
@@ -169,7 +170,7 @@ gitalk.render('gitalk-container')
             let target="";
 		    if(typeof(s[1])=="undefined")target=ttraw;else target=s[1];
 		    if(s[0]=="url")return"<a href=\""+target+"\">"+tt+"</a>";
-            else return"<div class=\"posti\"><a href=\""+target+"\">"+tt+"</a></div>";
+            else return"<div class=\"posti alone\"><a href=\""+target+"\">"+tt+"</a></div>";
 	    }
         case"ubg":{
             return"<div class=\"posti-group\">"+tt+"</div>";
