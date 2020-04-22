@@ -16,10 +16,11 @@ if(!ispc()){
 tabcon.style.width=tabcon.style.maxWidth="70%";
 }
 tabcon.style.left="-70%";
-function hit_content(){
-    if(tabcon.style.left=="-70%")
-        tabcon.style.left="0";
-    else tabcon.style.left="-70%";
+function open_content(){
+    tabcon.style.left="0";
+}
+function close_content(){
+    tabcon.style.left="-70%";
 }
 function off_content(){
     tabcon.style.opacity="0";

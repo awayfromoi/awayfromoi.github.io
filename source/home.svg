@@ -25,22 +25,24 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="14.459375"
-     inkscape:cx="26.925882"
-     inkscape:cy="19.040976"
+     inkscape:zoom="6.5998798"
+     inkscape:cx="5.1056773"
+     inkscape:cy="39.540461"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1412"
+     inkscape:window-width="1413"
      inkscape:window-height="855"
-     inkscape:window-x="28"
+     inkscape:window-x="27"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
      inkscape:pagecheckerboard="true"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0">
+     fit-margin-bottom="0"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0">
     <inkscape:grid
        type="xygrid"
        id="grid815"
@@ -65,12 +67,12 @@
      id="layer1"
      transform="translate(0.56964361,-285.26808)">
     <path
-       style="fill:#000000;stroke:none;stroke-width:0.16768947px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50196081;fill-opacity:0.50196081"
+       style="fill:#ffffff;stroke:none;stroke-width:0.16768947px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50196081;fill-opacity:1"
        d="m 5.575177,285.68651 -5.88223414,4.1829 H 2.2139004 v 5.85606 h 0.8403192 v -4.1829 H 5.575177 v 4.1829 h 3.3612767 v -5.85606 h 2.5209583 l -2.5209583,-1.79275 v -2.39015 H 8.0961344 v 1.67316 l 0.42016,0.41829 z"
        id="path832"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:#000000;stroke:none;stroke-width:0.16768947px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50196081;fill-opacity:0.50196081"
+       style="fill:#ffffff;stroke:none;stroke-width:0.16768947px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50196081;fill-opacity:1"
        d="M 8.0961351,285.35192 H 8.9364537 Z"
        id="path840"
        inkscape:connector-curvature="0" />

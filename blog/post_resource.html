@@ -1,6 +1,6 @@
 <!DOCTYPE html><html><title>资源帖/Resources - Away from OI</title>
         <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /><link rel="stylesheet" type="text/css" href="wycero-1.css">
+	<meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /><link rel="stylesheet" type="text/css" href="emerg.css"><link rel="stylesheet" type="text/css" href="wycero-1.css">
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 	<link href="icon.png" rel="Shortcut Icon">
@@ -12,9 +12,9 @@
         <script >hljs.initHighlightingOnLoad();</script>
         <body id="body">
         <div class="top-bar">
-        <a href="index.html" class="tpi icon-top"><img src="home.svg" class="svg"></img></a>
+        <a href="index.html" class="tpi icon-top primary"><img src="home.svg" class="svg"></img></a>
         <p class="tpi">资源帖/Resources</p>
-        <a href="javascript:;" onclick="javascript:hit_content();" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
+        <a href="javascript:;" onclick="javascript:open_content();" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
         <br><br><br><br><div class="article"><br>
 <a name="bm1"></a><h2>回归文化课</h2><br>
 <a href="https://jyb.icu">Memset0のJYB.icu和文化课资源</a><br>
@@ -31,7 +31,7 @@
 <a name="bm4"></a><h3>危机热线</h3><br>
 <a href="tel:01082951332">北京（全国可拨）</a><br>
 <a href="tel:4001619995">上海（全国可拨）</a><br>
-</div><nav id="table-content"><a href="javascript:;" onclick="javascript:hit_content();" class="close-content">关闭目录</a><br><a href="#bm1" onclick="javascript:hit_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回归文化课</a><br><a href="#bm2" onclick="javascript:hit_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;了解羟基计划</a><br><a href="#bm3" onclick="javascript:hit_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;寻求帮助</a><br><a href="#bm4" onclick="javascript:hit_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;危机热线</a><br></nav>
+</div><nav id="table-content"><a href="javascript:;" onclick="javascript:close_content();" class="close-content">关闭目录</a><br><a href="#bm1" onclick="javascript:close_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回归文化课</a><br><a href="#bm2" onclick="javascript:close_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;了解羟基计划</a><br><a href="#bm3" onclick="javascript:close_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;寻求帮助</a><br><a href="#bm4" onclick="javascript:close_content();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;危机热线</a><br></nav>
 <div id="gitalk-container"></div>
 	<script>
 
@@ -42,7 +42,7 @@ const gitalk = new Gitalk({
   repo: 'afogi-comment',
   owner: 'awayfromoi',
   admin: ['awayfromoi','ferrumcccp'],
-  id: location.pathname,      
+  id: location.pathname,
   distractionFreeMode: false
 })
 gitalk.render('gitalk-container')

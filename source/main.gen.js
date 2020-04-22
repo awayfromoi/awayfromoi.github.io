@@ -74,17 +74,17 @@ function rec_proc(s){
                 tit=make_escape(meta.title);
             let bookht="";
             if(bookmarx.length>0){
-                bookht+="<a href=\"javascript:;\" onclick=\"javascript:hit_content();\" class=\"close-content\">关闭目录</a><br>";
+                bookht+="<a href=\"javascript:;\" onclick=\"javascript:close_content();\" class=\"close-content\">关闭目录</a><br>";
             }
             for(let i=0;i<bookmarx.length;i++){
                 let lev=bookmarx[i][0];let v=bookmarx[i][1];
-                bookht+="<a href=\"#bm"+(i+1)+"\" onclick=\"javascript:hit_content();\">"+rep_str("&nbsp;",6*(lev-1))+v.trim()+"</a><br>";
+                bookht+="<a href=\"#bm"+(i+1)+"\" onclick=\"javascript:close_content();\">"+rep_str("&nbsp;",6*(lev-1))+v.trim()+"</a><br>";
             }
             let ret="<!DOCTYPE html><html><title>"+tit+` - Away from OI</title>
         <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />`
-        if(meta.emerg)ret+=`<link rel="stylesheet" type="text/css" href="emerg.css">`;
-	else ret+=`<link rel="stylesheet" type="text/css" href="wycero-1.css">`
+        ret+=`<link rel="stylesheet" type="text/css" href="emerg.css">`;
+	ret+=`<link rel="stylesheet" type="text/css" href="wycero-1.css">`
 	ret+=`
   	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -95,15 +95,18 @@ function rec_proc(s){
         <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
         <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
         <script >hljs.initHighlightingOnLoad();</script>
-        <body id="body">
+        `
+	if(meta.emerg)ret+=`<body id="body" class="emerg">`
+	else ret+=`<body id="body">`
+	ret+=`
         <div class="top-bar">
         <a href="`;
-	if(meta.filename&&(meta.filename.startWith("en")||meta.filename.startWith("indexen")))ret+="indexen.html";else ret+="index.html"; 
-	ret+=`" class="tpi icon-top"><img src="home.svg" class="svg"></img></a>
+	if(meta.filename&&(meta.filename.startWith("en")||meta.filename.startWith("indexen")))ret+="indexen.html";else ret+="index.html";
+	ret+=`" class="tpi icon-top primary"><img src="home.svg" class="svg"></img></a>
         <p class="tpi">`+tit+`</p>
-        <a href="javascript:;" onclick="javascript:hit_content();" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
+        <a href="javascript:;" onclick="javascript:open_content();" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
         <br><br><br><br>`;
-        if(tit!="Home")ret+=`<div class="article">`+tt+`</div>`;
+        if(tit!="Home"&&tit!="首页")ret+=`<div class="article">`+tt+`</div>`;
         else ret+=tt;
         if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
         ret+=`
@@ -118,7 +121,7 @@ const gitalk = new Gitalk({
   repo: 'afogi-comment',
   owner: 'awayfromoi',
   admin: ['awayfromoi','ferrumcccp'],
-  id: location.pathname,      
+  id: location.pathname,
   distractionFreeMode: false
 })
 gitalk.render('gitalk-container')
@@ -168,6 +171,9 @@ gitalk.render('gitalk-container')
 		    if(s[0]=="url")return"<a href=\""+target+"\">"+tt+"</a>";
             else return"<div class=\"posti\"><a href=\""+target+"\">"+tt+"</a></div>";
 	    }
+        case"ubg":{
+            return"<div class=\"posti-group\">"+tt+"</div>";
+        }
         case"quote":{
             if(typeof(s[1])=="undefined")return"<blockquote>"+tt+"</blockquote>";
             else return"<blockquote><cite>"+make_escape(s[1])+": </cite><br>"+tt+"</blockquote>";
@@ -316,13 +322,13 @@ index_page=`@{"title":"首页"}
 [b]OI退役也许让你失去了很多，但是你不必独自面对[/b]
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
 您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
-`;
+[ubg]`;
 indexen=`@{"title":"Home"}
 [h1]Away from OI[/h1]
 [b]Being away from OI may seem to be great loss, but you don't have face it alone[/b]
 Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
 You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
-`
+[ubg]`
 for(let i=0;i<pages.length;i++){
 	if(pages[i].hidden)continue;
 	let ub="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
@@ -330,5 +336,7 @@ for(let i=0;i<pages.length;i++){
 	else if(pages[i].filename.startWith("multi")){index_page+=ub;indexen+=ub;}
 	else index_page+=ub;
 }
+indexen+="[/ubg]";
+index_page+="[/ubg]";
 fs.writeFileSync("../blog/index.html",proc(index_page,"index.html"));
 fs.writeFileSync("../blog/indexen.html",proc(indexen,"indexen.html"));
