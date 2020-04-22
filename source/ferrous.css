@@ -1,5 +1,5 @@
 @keyframes movelight{
-	0%{left:-30%;/*transform:rotate(100deg)*/;}
+	0%{left:-100%;/*transform:rotate(100deg)*/;}
 	100%{left:100%;/*transform:rotate(10deg)*/;}
 }
 body{
@@ -194,10 +194,10 @@ code{
 .article table{
 	width:100%;
 	border-collapse:collapse;
-	border:solid 2px black;
+	border:solid 2px #0c3;
 }
 .article tr,.article td{
-	border:solid 1px #80808040;
+	border:solid 1px #0c3;
 }
 .article,footer{
 	background-color:#FFFFFF80;
