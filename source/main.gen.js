@@ -326,7 +326,7 @@ index_page=`@{"title":"首页"}
 您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
 [ubg]`;
 indexen=`@{"title":"Home"}
-[frontpage][h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have face it alone.[/b][/frontpage]
+[frontpage][h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have to deal with it alone.[/b][/frontpage]
 Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
 You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
 [ubg]`
