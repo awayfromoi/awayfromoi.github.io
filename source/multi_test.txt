@@ -105,8 +105,7 @@ Normal Table
 <tbody>
 </table>
 [/raw_html]
-[code]
-#include<iostream>
+[code]#include<iostream>
 using namespace std;
 int main(){
 	int a,b;cin>>a>>b;

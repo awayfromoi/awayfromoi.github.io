@@ -54,7 +54,7 @@ function rec_proc(s){
             if(s[0]=="code")tt+=make_escape(s[i]);
             else{
                 if(s[i]=="\n"){
-                        tt+="<br>\n";
+                        if(tt!="")tt+="<br>\n";
                 }else if(s[i]=="\r"){
                     if(i>2&&(typeof(s[i-1])=="string"&&s[i-1]=="\n")); //DOS
 	                     else tt+="<br>\n";
@@ -92,10 +92,10 @@ function rec_proc(s){
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/katex.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0-rc.1/contrib/auto-render.js"></script>
-        <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
-        <script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
-        <script src="https://ajax.proxy.ustclug.org/ajax/libs/jquery/3.1.0/jquery.min.js">
-        <script >hljs.initHighlightingOnLoad();</script>
+        <link href="https://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+        <script src="https://ajax.proxy.ustclug.org/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
         `
 	if(meta.emerg)ret+=`<body id="body" class="emerg">`
 	else ret+=`<body id="body">`
@@ -103,10 +103,10 @@ function rec_proc(s){
         <div class="top-bar">
         <a href="`;
 	if(meta.filename&&(meta.filename.startWith("en")||meta.filename.startWith("indexen")))ret+="indexen.html";else ret+="index.html";
-	ret+=`" class="tpi icon-top primary"><img src="home.svg" class="svg"></img></a>
+	ret+=`" class="tpi icon-top primary"><img src="home.svg" class="svg"></a>
         <p class="tpi">`+tit+`</p>
-        <a href="javascript:;" onclick="javascript:open_content();" class="tpi icon-top"><img src="top.svg" class="svg"></img></a></div>
-        <br><br><br><br>`;
+        <a href="javascript:;" onclick="javascript:open_content();" class="tpi icon-top"><img src="top.svg" class="svg"></a></div>
+        `;
         if(tit!="Home"&&tit!="首页")ret+=`<div class="article">`+tt+`</div>`;
         else ret+=tt;
         if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
@@ -138,6 +138,7 @@ gitalk.render('gitalk-container')
         <a href="https://highlightjs.org/">Highlightjs</a></p>
         <p>Hosted On coding.me</p>
         </footer>
+        <script >hljs.initHighlightingOnLoad();</script>
         <script>
             renderMathInElement(document.body,
            {
@@ -179,9 +180,10 @@ gitalk.render('gitalk-container')
             if(typeof(s[1])=="undefined")return"<blockquote>"+tt+"</blockquote>";
             else return"<blockquote><cite>"+make_escape(s[1])+": </cite><br>"+tt+"</blockquote>";
         }
-	case"img":{return"<img class=\"article-img\" src=\""+ttraw+"\" alt=\"\"/>";}
+	    case"img":{return"<img class=\"article-img\" src=\""+ttraw+"\" alt=\"\"/>";}
         case"raw_html":{return ttraw;}
-        case"code":{return "<pre><code>"+tt+"</code></pre>"}
+        case"code":{return "<pre><code class=\"hljs "+(s[1]||"")+"\">"+tt+"</code></pre>"}
+        case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-inner\">"+tt+"</div></div>";}
         case"*":{return;}
         case"rem":{return;}
         case"list":{
@@ -319,14 +321,12 @@ for(let i=0;i<curdir.length;i++){
 }
 // Sorry4hardcoding
 index_page=`@{"title":"首页"}
-[h1]Away from OI[/h1]
-[b]OI退役也许让你失去了很多，但是你不必独自面对[/b]
+[frontpage][h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对[/b][/frontpage]
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
 您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
 [ubg]`;
 indexen=`@{"title":"Home"}
-[h1]Away from OI[/h1]
-[b]Being away from OI may seem to be great loss, but you don't have face it alone[/b]
+[frontpage][h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have face it alone.[/b][/frontpage]
 Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
 You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
 [ubg]`

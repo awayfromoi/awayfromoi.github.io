@@ -1,2 +1,2 @@
-@{"title":"WIP - 请帮助我扩充内容","description":""}
+@{"title":"WIP - 请支持本项目","description":""}
 [urlbox="https://github.com/awayfromoi/awayfromoi.github.io/"]仓库[/urlbox]
