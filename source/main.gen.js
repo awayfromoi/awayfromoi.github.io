@@ -321,12 +321,14 @@ for(let i=0;i<curdir.length;i++){
 }
 // Sorry4hardcoding
 index_page=`@{"title":"首页"}
-[frontpage][h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对[/b][/frontpage]
+[frontpage][raw_html]<h1>Away from OI</h1>[/raw_html][b]OI退役也许让你失去了很多，但是你不必独自面对[/b][/frontpage]
+[h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对[/b]
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
 您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
 [ubg]`;
 indexen=`@{"title":"Home"}
 [frontpage][h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have to deal with it alone.[/b][/frontpage]
+[h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have to deal with it alone.[/b]
 Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
 You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
 [ubg]`

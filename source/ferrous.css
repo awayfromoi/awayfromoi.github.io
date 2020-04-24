@@ -289,7 +289,7 @@ a.tpi.icon-top:hover>.svg,a.tpi.icon-top:active>.svg,a.tpi.icon-top:focus>.svg{
 .icon-top{
 	position:relative;
 }
-.icon-top.primary:hover:before,.icon-top.primary:active:before,.icon-top.primary:focus:before {
+.primary:hover:before,.primary:active:before,.primary:focus:before {
 /*.icon-top:hover:before,.icon-top:active:before,.icon-top:focus:before {*/
 	position: absolute;
 	background-image: linear-gradient(to right,transparent,#ffffffff,transparent);
@@ -304,12 +304,6 @@ a.tpi.icon-top:hover>.svg,a.tpi.icon-top:active>.svg,a.tpi.icon-top:focus>.svg{
 	/*animation-delay:1s;*/
 	/* overflow: visible; */
 }
-body{
-	margin:0;
-}
-body>*{
-	margin-left:8px;margin-right:8px;
-}
 .frontpage-inner{
 	display:flex;
 	flex-flow:column;
@@ -321,20 +315,23 @@ body>*{
 	font-variant: small-caps;
 }
 .frontpage{
-	/*position:absolute;*/
+	position:absolute;
 	margin-left:0;margin-right:0;margin-bottom:1.4em;
-	margin-top:2.6em;
-	top:2.6em;
 	width:100vw;
+	top:0;
 	left:0;
-	height:60vh;
+	z-index:1012;
+	height:100vh;
 	background-image:url("./himg.jpg");
 	background-size:cover;
 	background-repeat:bo-repeat;
 }
 .frontpage-inner h1{
-	flex:2;
+	flex:4;
 }
 .frontpage-inner strong{
+	flex:2;
+}
+.frontpage-inner a{
 	flex:1;
 }
