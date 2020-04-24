@@ -320,6 +320,7 @@ a.tpi.icon-top:hover>.svg,a.tpi.icon-top:active>.svg,a.tpi.icon-top:focus>.svg{
 	left:0;
 	z-index:1012;
 	height:100vh;
+	background-color:black;
 	background-image:url("./himg.jpg");
 	background-size:cover;
 	background-repeat:no-repeat;
