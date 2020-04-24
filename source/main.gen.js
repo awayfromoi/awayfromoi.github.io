@@ -115,7 +115,8 @@ function rec_proc(s){
 	ret+=`
 	<script>
 
-if(location.href.substr(0,5)=="file:"||location.hostname.substr(0,3)=="127");else{
+if(location.href.substr(0,5)=="file:"||location.hostname.substr(0,3)=="127"){
+    $("#gitalk-container").css("display","none");}else{
 const gitalk = new Gitalk({
   clientID: '133aa544ab7aacc0e908',
   clientSecret: 'fe362d1dd84949381a7cb9bc6701219881316394',
@@ -128,6 +129,8 @@ const gitalk = new Gitalk({
 gitalk.render('gitalk-container')
 }
 	</script>
+    <!-- 1-800-273-8255 -->
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=518077470&auto=1&height=66" class="embed-player"></iframe>
 	<div id="gitalk-container"></div>
 	<footer>
         <script src="wycero-1.js"></script>
@@ -183,7 +186,7 @@ gitalk.render('gitalk-container')
 	    case"img":{return"<img class=\"article-img\" src=\""+ttraw+"\" alt=\"\"/>";}
         case"raw_html":{return ttraw;}
         case"code":{return "<pre><code class=\"hljs "+(s[1]||"")+"\">"+tt+"</code></pre>"}
-        case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-inner\">"+tt+"<a class=\"primary\" onclick=\"close_front()\">Learn More</a></div></div>";}
+        case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-overlay\"><div class=\"frontpage-inner container\">"+tt+"<a class=\"primary\" onclick=\"close_front()\">Learn More</a></div></div></div>";}
         case"*":{return;}
         case"rem":{return;}
         case"list":{
@@ -321,8 +324,8 @@ for(let i=0;i<curdir.length;i++){
 }
 // Sorry4hardcoding
 index_page=`@{"title":"首页"}
-[frontpage][raw_html]<h1>Away from OI</h1>[/raw_html][b]OI退役也许让你失去了很多，但是你不必独自面对[/b][/frontpage]
-[h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对[/b]
+[frontpage][raw_html]<h1>Away from OI</h1>[/raw_html][b]OI退役也许让你失去了很多，但是你不必独自面对。[/b][/frontpage]
+[h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对。[/b]
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
 您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
 [ubg]`;

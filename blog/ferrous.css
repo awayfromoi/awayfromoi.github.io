@@ -302,15 +302,23 @@ a.tpi.icon-top:hover>.svg,a.tpi.icon-top:active>.svg,a.tpi.icon-top:focus>.svg{
 	display:block;
 	animation:movelight 2s ease-in-out infinite;
 }*/
-.frontpage-inner{
-	display:flex;
-	flex-flow:column;
+.frontpage-overlay{
 	width:100%;height:100%;
 	background-color:#00842080;
 	text-align:center;
 	font-size:1.5em;
 	color:#00e63a;
 	font-variant: small-caps;
+	box-sizing:border-box;
+	padding-left:10vw;padding-right:10vw;
+	padding-top:10vh;padding-bottom:10vh;
+}
+.frontpage-inner{
+	display:flex;
+	flex-flow:column;
+	box-sizing:border-box;
+	width:100%;
+	height:100%;/*margin:10%;*/
 }
 .frontpage{
 	position:fixed;
@@ -341,4 +349,10 @@ a.tpi.icon-top:hover>.svg,a.tpi.icon-top:active>.svg,a.tpi.icon-top:focus>.svg{
 }
 .frontpage-inner .primary:hover{
 	color:rgba(255,255,255,1);
+}
+.embed-player{
+	position:fixed;
+	z-index:1008;
+	bottom:0;
+	left:0;
 }
