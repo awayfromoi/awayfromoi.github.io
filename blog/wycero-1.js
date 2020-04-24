@@ -26,3 +26,7 @@ function close_content(){
 function off_content(){
     if(tabcon)tabcon.style.opacity="0";
 }
+function close_front(){
+    $(".frontpage").css("opacity","0");
+    setTimeout(()=>{$(".frontpage").css("display","none");},500)
+}
