@@ -107,11 +107,11 @@ function rec_proc(s){
         <p class="tpi">`+tit+`</p>
         <a href="javascript:;" onclick="javascript:open_content();" class="tpi icon-top"><img src="top.svg" class="svg"></a></div>
         `;
-        if(tit!="Home"&&tit!="首页")ret+=`<div class="article">`+tt+`</div>`;
+        if(true)ret+=`<div class="article">`+tt+`</div>`;
         else ret+=tt;
         if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
         ret+=`
-<div id="gitalk-container"></div>`;
+<div id="gitalk-container" class="container"></div>`;
 	ret+=`
 	<script>
 
@@ -183,7 +183,7 @@ gitalk.render('gitalk-container')
 	    case"img":{return"<img class=\"article-img\" src=\""+ttraw+"\" alt=\"\"/>";}
         case"raw_html":{return ttraw;}
         case"code":{return "<pre><code class=\"hljs "+(s[1]||"")+"\">"+tt+"</code></pre>"}
-        case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-inner\">"+tt+"</div></div>";}
+        case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-inner\">"+tt+"<a class=\"primary\" onclick=\"close_front()\">Learn More</a></div></div>";}
         case"*":{return;}
         case"rem":{return;}
         case"list":{
