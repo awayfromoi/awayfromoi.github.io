@@ -307,7 +307,8 @@ a.tpi.icon-top:hover>.svg,a.tpi.icon-top:active>.svg,a.tpi.icon-top:focus>.svg{
 	background-color:#00842080;
 	text-align:center;
 	font-size:1.5em;
-	color:#00e63a;
+/*	color:#00e63a;*/
+	color:#008420;
 	font-variant: small-caps;
 	box-sizing:border-box;
 	padding-left:10vw;padding-right:10vw;

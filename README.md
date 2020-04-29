@@ -1,5 +1,5 @@
 # AwayFromOI.github.io
-A repo meant to provide help resources for those who have just quitted competitive programming.
+Created by a former OIer, this repo is intended for former competitive programmers to offer help to one another.
 ## How this project can help
 - Providing links to resources
 - Giving advice

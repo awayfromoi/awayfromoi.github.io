@@ -327,13 +327,15 @@ index_page=`@{"title":"首页"}
 [frontpage][raw_html]<h1>Away from OI</h1>[/raw_html][b]OI退役也许让你失去了很多，但是你不必独自面对。[/b][/frontpage]
 [h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对。[/b]
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
-您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。
+您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。亲爱的读者们，同是退役 OIer，[b]我们可以互相帮助！[/b]
+如果您无法应对失去，例如长时间处于沮丧状态或正在考虑自杀，[b]请寻求专业帮助。[/b]
 [ubg]`;
 indexen=`@{"title":"Home"}
 [frontpage][h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have to deal with it alone.[/b][/frontpage]
 [h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have to deal with it alone.[/b]
 Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
-You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it.
+You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it. My dear readers, as we are all former competitive programmers, [b]we can help each other![/b].
+If you are not coping with the loss, for example you are feeling down over a long period of time or you are thinking about suicide, [b]seek professional help.[/b]
 [ubg]`
 for(let i=0;i<pages.length;i++){
 	if(pages[i].hidden)continue;
