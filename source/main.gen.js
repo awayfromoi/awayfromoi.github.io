@@ -1,33 +1,13 @@
 fs=require("fs");
 curdir=fs.readdirSync(".");
 mi=new require("markdown-it")();
-//console.log(curdir);
 
 //define startWith and endWith
 String.prototype.startWith=function(s){return(new RegExp("^"+s)).test(this);}
 String.prototype.endWith=function(s){return(new RegExp(s+"$")).test(this);}
 
-ss="";cur=0;len=0;
-raw_mode=false;
-sta=["root"];
-sta2=[["root",[]]];
-raws={
-    "raw_html":1,"code":1,"$":1,"*":-1
-}
 meta="";
 bookmarx=[];
-// Finish the subtree, returns false when the whole tree is proceeded
-function collapse(){
-    if(sta.length==1)return false;
-    sta2[sta.length-2].push(sta2[sta.length-1]);
-    sta2.pop();sta.pop();
-    if(raws[sta[sta.length-1]]==1)raw_mode=true;else raw_mode=false;
-    return true;
-}
-function make_error(s){
-    return "<html><body><h1 style=\"color:red\">ERROR</h1><p>"
-        +s+"</p></body></html>";
-}
 function make_escape(s){
     let t="";
     for(let i=0;i<s.length;i++){
@@ -40,11 +20,6 @@ function make_escape(s){
     }
     return t;
 }
-function has_quote(s){
-    for(let i=0;i<s.length;i++)if(s[i]=="\"")return true;
-    return false;
-}
-function rep_str(s,tim){if(tim<1)return"";else return s+rep_str(s,tim-1);}
 function rec_proc(s){
     let tt=s;
     let ttraw=s;

@@ -104,25 +104,33 @@ This should detect if KaTeX is used: $\KaTeX$
 ##### H5
 ###### H6
 _Italic_
-**Bold (strong)**
+**Bold**
 
-~~Delete (del)~~
+~~Delete~~
 
 [URLURLURLURL](http://www.org)
 
+Url Box:
+
 - [URLURLURLURL](http://www.org)
+
+Url Box:
 
 - [URLURLURLURL](http://www.org)
 - [URLURLURLURL](http://www.org)
 
+Unordered List:
+
 - Unordered
 - Unordered
+
+Ordered List:
+
 4. 4
 5. 5
 > Quote
 > > nested quote
-> > >nested^2 quote
-> > > > nested^3 quote
+> > > nested^2 quote
 
 | 左对齐 | 右对齐 | 居中对齐 |
 | :-----| ----: | :----: |

@@ -153,12 +153,12 @@ h2.postii{text-align:center;text-decoration:none;}
 box-shadow:inset 10px 0px 0px 0px #008420;
 }
 h2.postii::before{display:none;}
-.article del{
+.article del,.article s{
 	background-color:#000000;
 	transition:background 0.1s;
 	padding:auto;
 }
-.article del:hover{
+.article del:hover,.article s:hover{
 	background-color:transparent;
 }
 footer{
