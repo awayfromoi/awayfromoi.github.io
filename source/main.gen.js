@@ -207,3 +207,4 @@ for(let i=0;i<pages.length;i++){
 }
 fs.writeFileSync("../blog/index.html",proc(index_page,"index.html"));
 fs.writeFileSync("../blog/indexen.html",proc(indexen,"indexen.html"));
+
