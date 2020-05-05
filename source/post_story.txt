@@ -1,2 +1,2 @@
-@{"title":"我的故事"}
+@{"title":"我的故事","hidden":true}
 [h1]FerrumCCCP的故事[/h1]
