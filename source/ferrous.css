@@ -196,7 +196,7 @@ code{
 	border-collapse:collapse;
 	border:solid 2px #0c3;
 }
-.article tr,.article td{
+.article tr,.article td,.article th{
 	border:solid 1px #0c3;
 }
 .article{

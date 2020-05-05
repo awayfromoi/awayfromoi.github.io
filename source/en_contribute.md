@@ -1,3 +1,3 @@
 @{"title":"WIP - Please Support This Project","description":""}
 Please help me expand this project.
-[ubg][urlbox="https://github.com/awayfromoi/awayfromoi.github.io/"]Repo[/urlbox][/ubg]
+- [Repo](https://github.com/awayfromoi/awayfromoi.github.io/)

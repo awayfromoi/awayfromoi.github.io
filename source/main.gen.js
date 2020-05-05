@@ -1,5 +1,6 @@
 fs=require("fs");
 curdir=fs.readdirSync(".");
+mi=new require("markdown-it")();
 //console.log(curdir);
 
 //define startWith and endWith
@@ -45,30 +46,8 @@ function has_quote(s){
 }
 function rep_str(s,tim){if(tim<1)return"";else return s+rep_str(s,tim-1);}
 function rec_proc(s){
-    let tt="";
-    let ttraw="";
-    if(s.length==0)return make_error("Empty array(This is an internal error.)");
-    let las_li=false;
-    for(let i=2;i<s.length;i++){
-        if((typeof(s[i]))=="string"){
-            if(s[0]=="code")tt+=make_escape(s[i]);
-            else{
-                if(s[i]=="\n"){
-                        if(tt!="")tt+="<br>\n";
-                }else if(s[i]=="\r"){
-                    if(i>2&&(typeof(s[i-1])=="string"&&s[i-1]=="\n")); //DOS
-	                     else tt+="<br>\n";
-                }else tt+=make_escape(s[i]);
-            }
-            ttraw+=s[i];
-        }else if(s[i][0]=="*"){
-            if(las_li)tt+="</li><li>";else{
-                tt+="<li>";las_li=1;
-            }
-        }else tt+=rec_proc(s[i]);
-    }
-    switch(s[0]){
-        case"root":{
+    let tt=s;
+    let ttraw=s;
             let tit="";
             if(meta!=undefined&&typeof(meta.title)=="string")
                 tit=make_escape(meta.title);
@@ -160,52 +139,7 @@ gitalk.render('gitalk-container')
                   }
           );
         </script>`+"</body></html>";
-        return ret;}
-        case"h1":
-        case"h2":
-        case"h3":
-        case"h4":
-        case"h5":
-        case"h6":{
-            //bookmarx.push([JSON.parse(s[0][1]),tt]);
-            return"<"+s[0]+">"+tt+"</"+s[0]+">";
-        }
-        case"b":{return"<strong>"+tt+"</strong>";}
-        case"i":{return"<em>"+tt+"</em>";}
-        case"$":{return"$"+tt+"$";}
-        case"u":{
-            console.log("Warning: Do not use underline as it mixes up with hyperlink.");
-            return tt;}
-        case"del":{return"<del>"+tt+"</del>";}
-        case"url":{
-            let target="";
-		    if(typeof(s[1])=="undefined")target=ttraw;else target=s[1];
-		    return"<a href=\""+target+"\">"+tt+"</a>";
-	    }
-        case"urlbox":{
-            let target="";
-		    if(typeof(s[1])=="undefined")target=ttraw;else target=s[1];
-		    return"<li><a href=\""+target+"\">"+tt+"</a></li>";
-	    }
-        case"quote":{
-            if(typeof(s[1])=="undefined")return"<blockquote>"+tt+"</blockquote>";
-            else return"<blockquote><cite>"+make_escape(s[1])+": </cite><br>"+tt+"</blockquote>";
-        }
-	    case"img":{return"<img class=\"article-img\" src=\""+ttraw+"\" alt=\"\"/>";}
-        case"raw_html":{return ttraw;}
-        case"code":{return "<pre><code class=\"hljs "+(s[1]||"")+"\">"+tt+"</code></pre>"}
-        case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-overlay\"><div class=\"frontpage-inner container\">"+tt+"<a class=\"primary\" onclick=\"close_front()\">Learn More</a></div></div></div>";}
-        case"*":{return;}
-        case"rem":{return;}
-        case"ubg":
-        case"list":{
-            if(typeof(s[1])=="undefined")return"<ul>"+tt+"</ul>";
-            else return"<ol start=\""+s[1]+"\">"+tt+"</ol>";
-        }
-        default:{
-            console.log("Warning: Unknown Tag: "+s[0]);
-            return "["+s[0]+"]"+tt+"[/"+s[0]+"]";}
-    }
+        return ret;
 }
 pages=[];
 function arr_proc(s){
@@ -215,115 +149,27 @@ function arr_proc(s){
     return rec_proc(s);
 }
 function proc(s,filename){
-    //s="[h1]AFO[/h1]";
-    ss="";cur=0;len=0;
-    raw_mode=false;
-    sta=["root"];
-    sta2=[["root",[]]];
-    bookmarx=[];
+    var i=0;
     meta=undefined;
-    ss=s;cur=0;
-    len=ss.length;
-    while(cur<len){
-        if(ss[cur]=="["){
-            if(raw_mode){
-                // Only Checks if this tag ends, regardless of anything else
-                if(sta.length&&cur+sta[sta.length-1].length+3<len
-                    &&ss.substr(cur,sta[sta.length-1].length+3)
-                    =="[/"+sta[sta.length-1]+"]"){
-                    cur+=sta[sta.length-1].length+3;
-                    if(!collapse())return arr_proc(sta2[0]);
-                }
-                else{
-                    sta2[sta.length-1].push(ss[cur]);cur++;
-                }
-            }else{
-                if(cur+1>=len)return make_error("Expected tag or escape, but found EOF");
-                if(cur+1<len&&(ss[cur+1]=="["||ss[cur+1]=="]"||ss[cur+1]=="@")){
-                    sta2[sta.length-1].push(ss[cur+1]);cur+=2;
-                }else{
-                    cur++;
-                    let tag="";
-                    let arg="";let argon=false;
-                    while(true){
-                        if(cur>=len)return make_error("Expected tag, but found EOF");
-                        if(argon){
-                            //arg+=ss[cur];
-                            if(ss[cur]=="\\"){
-                                if(cur+1<len){
-                                    if(ss[cur+1]=="x"||ss[cur+1]=="u")
-                                        return make_error("x/u escape is not supported");
-                                    let es="\"\\"+ss[cur+1]+"\"";
-                                    es=JSON.parse(es);
-                                    arg+=es;cur++;
-                                }else{
-                                    return make_error("Expected escape sequence, but found EOF");
-                                }
-                            }else if(ss[cur]=="\""){
-                                if(cur+1<len&&ss[cur+1]=="]"){cur+=2;break;}
-                                else return make_error("Expected ]");
-                            }else arg+=ss[cur];
-                        }else{
-                            if(ss[cur]=="]"){cur++;break;}
-                            if(ss[cur]=="="){
-                                argon=true;
-                                if(cur+1<len&&ss[cur+1]=="\"")cur++;
-                                else return make_error("Expected quote after =");
-                            }
-                            else tag+=ss[cur];
-                        }
-                        cur++;
-                    }
-                    if(tag.length==0)return make_error("Empty tag(It's an internal problem.)");
-                    if(tag[0]=='/'){
-                        tag=tag.substr(1,tag.length-1);
-                        if(tag==sta[sta.length-1]){
-                            if(!collapse())return arr_proc(sta2[0]);
-                        }else return make_error("Mismatched close tag: expected "+sta[sta.length-1]+" found "+tag);
-                    }else{
-                        if(raws[tag]==1)raw_mode=true;else raw_mode=false;
-                        sta.push(tag);
-                        sta2.push([]);
-                        sta2[sta.length-1].push(tag);
-                        if(argon){
-                            sta2[sta.length-1].push(arg);
-                        }else sta2[sta.length-1].push(undefined);
-                        if(raws[tag]==-1)if(!collapse())return arr_proc(sta2[0]);
-                    }
-                }
-            }
-        }else if(ss[cur]=="@"){
-            cur++;
-            let mt="";
-            while(cur<len&&ss[cur]!="\n"&&ss[cur]!="\r"){
-                mt+=ss[cur];cur++;
-            }
-            meta=JSON.parse(mt.trim());
-            if(filename!="")meta.filename=filename;
-        }else if(ss[cur]=="$"){
-            if(raw_mode){
-                if(sta[sta.length-1]=="$"){
-                    if(!collapse())return arr_proc(sta2[0]);
-                    raw_mode=0;
-                }else{sta2[sta.length-1].push(ss[cur]);}
-            }else{
-                sta.push("$");
-                sta2.push([]);
-                sta2[sta.length-1].push("$");
-                sta2[sta.length-1].push(undefined);
-                raw_mode=true;
-            }
-            cur++;
-        }else{
-            sta2[sta.length-1].push(ss[cur]);cur++;
+    if(s[0]=="@"){
+        meta="";
+        for(i=1;i<s.length;i++){
+            if(s[i]=="\r"||s[i]=="\n")break;
+            meta+=s[i];
         }
     }
-    if(sta.din!=1)make_error("Expected more close tabs, but found EOF");
-    return arr_proc(sta2[0]);
+    if(meta)meta=JSON.parse(meta);
+    meta.filename=filename;
+    console.log(meta);
+    while(i<s.length&&(s[i]=="r"||s[i]=="\n"))i++;
+    return arr_proc(mi.render(s.substr(i)));
 }
-function htmlize(s){return s.substr(0,s.length-4)+".html";}
+function htmlize(s){
+    if(s.endWith(".txt"))return s.substr(0,s.length-4)+".html";
+    else if(s.endWith(".md"))return s.substr(0,s.length-3)+".html";
+}
 for(let i=0;i<curdir.length;i++){
-    if(curdir[i].endWith(".txt")){
+    if(curdir[i].endWith(".txt")||curdir[i].endWith(".md")){
         console.log("Proceeding BBCODE: "+curdir[i]);
         fs.writeFileSync("../blog/"+htmlize(curdir[i]),proc(fs.readFileSync(curdir[i],"utf8"),htmlize(curdir[i])));
     }else if((!curdir[i].endWith(".gen.js"))&&(curdir[i]!="g")){
@@ -333,25 +179,31 @@ for(let i=0;i<curdir.length;i++){
 }
 // Sorry4hardcoding
 index_page=`@{"title":"首页"}
-[h1]Away from OI[/h1][b]OI退役也许让你失去了很多，但是你不必独自面对。[/b]
+# Away from OI
+**OI退役也许让你失去了很多，但是你不必独自面对。**
+
 告诉您的父母和老师您正在经历的事情，并向他们寻求建议。 他们可能会更多地了解当前的状况以及如何应对压力。
-您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。亲爱的读者们，同是退役 OIer，[b]我们可以互相帮助！[/b]
-如果您无法应对失去，例如长时间处于沮丧状态或正在考虑自杀，[b]请寻求专业帮助。[/b]
-[ubg]`;
+
+您也可以浏览该网站。 虽然该网站仍在开发中，但我希望您能从中获得帮助。亲爱的读者们，同是退役 OIer，**我们可以互相帮助！**
+
+如果您无法应对失去，例如长时间处于沮丧状态或正在考虑自杀，**请寻求专业帮助。**
+`;
 indexen=`@{"title":"Home"}
-[h1]Away from OI[/h1][b]Being away from OI may seem to be great loss, but you don't have to deal with it alone.[/b]
+# Away from OI
+**Being away from OI may seem to be great loss, but you don't have to deal with it alone.**
+
 Tell your parents and teachers about what you are going through and ask them for advice. They may know more about the present situation and how to deal with stress.
-You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it. My dear readers, as we are all former competitive programmers, [b]we can help each other![/b].
-If you are not coping with the loss, for example you are feeling down over a long period of time or you are thinking about suicide, [b]seek professional help.[/b]
-[ubg]`
+
+You can also have a look at this website. Though this website is a work in progress, I hope you can get help from it. My dear readers, as we are all former competitive programmers, **we can help each other!**
+
+If you are not coping with the loss, for example you are feeling down over a long period of time or you are thinking about suicide, **seek professional help.**
+`
 for(let i=0;i<pages.length;i++){
 	if(pages[i].hidden)continue;
-	let ub="[urlbox=\""+pages[i].filename+"\"]"+pages[i].title+"[/urlbox]";
+	let ub="- ["+pages[i].title+"]("+pages[i].filename+")\n";
 	if(pages[i].filename.startWith("en"))indexen+=ub;
 	else if(pages[i].filename.startWith("multi")){index_page+=ub;indexen+=ub;}
 	else index_page+=ub;
 }
-indexen+="[/ubg]";
-index_page+="[/ubg]";
 fs.writeFileSync("../blog/index.html",proc(index_page,"index.html"));
 fs.writeFileSync("../blog/indexen.html",proc(indexen,"indexen.html"));

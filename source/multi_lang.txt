@@ -1,2 +1,0 @@
-@{"title":"切换语言/Switch Language"}
-[ubg][urlbox="index.html"]简体中文[/urlbox][urlbox="indexen.html"]English[/urlbox][/ubg]

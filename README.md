@@ -30,11 +30,10 @@ suicide. I don't want such tragedy to reoccur, nor do I want to lose any of my f
 Another difficulty comes from China's policy, which makes it a lot harder to enter good college by competition. Once they quite,
 they need _more_ effort to enter college by school subjects. **Therefore, resources are needed to support them.**
 # Note to maintainers and contributers
-The blog generator is based on the old code written in 2019 and I haven't managed to clean it up. To generate the blog, switch to `source/` dir and run `./g`(or `g.bat` on Windows)
-
+To generate the blog, switch to `source/` dir and run `./g`(or `g.bat` on Windows)
 
 To write a post write it on the first line:
 ```
 @{"title":"The title of the page goes here."}
 ```
-And then write BBCode below.
+And then write Markdown below.
