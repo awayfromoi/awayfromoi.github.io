@@ -69,7 +69,7 @@ Here are some blank lines.
 [del]Delete (del)[/del]
 [url]http://www.org[/url]
 [url="http://www.org"]URLURLURLURL[/url]
-[urlbox="http://www.org"]URLBox[/urlbox]
+[ubg][urlbox="http://www.org"]URLBox[/urlbox][/ubg]
 [ubg][urlbox="http://www.org"]URLBox[/urlbox][urlbox="http://www.org"]URLBox[/urlbox][/ubg]
 [list]
 [*]Unordered
