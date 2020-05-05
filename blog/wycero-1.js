@@ -30,6 +30,7 @@ function close_front(){
     $(".frontpage").css("opacity","0");
     setTimeout(()=>{$(".frontpage").css("display","none");},500)
 }
+//jQuery太好用了
 $("ul>li:has(a:only-child)").addClass("link-li");
 $("ul").each((ind,elem)=>{
     var cnt1=0;
@@ -41,3 +42,11 @@ $("ul").each((ind,elem)=>{
         $(elem).children().addClass("posti");
     }
 })
+var cnt=0;
+var add_html="";
+$(".article h1,.article h2,.article h3,.article h4,.article h5,.article h6").each((ind,elem)=>{
+    add_html+='<a href="#bm'+cnt+'">'+$(elem).text()+'</a>'
+    $(elem).html('<a name="bm'+cnt+'"></a>'+$(elem).html())
+    cnt++;
+})
+$("#table-content").html($("#table-content").html()+add_html)

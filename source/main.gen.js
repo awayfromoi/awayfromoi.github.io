@@ -73,7 +73,7 @@ function rec_proc(s){
             if(meta!=undefined&&typeof(meta.title)=="string")
                 tit=make_escape(meta.title);
             let bookht="";
-            if(bookmarx.length>0){
+            if(bookmarx.length>=0){
                 bookht+="<a href=\"javascript:;\" onclick=\"javascript:close_content();\" class=\"close-content\">关闭目录</a><br>";
             }
             for(let i=0;i<bookmarx.length;i++){
@@ -117,7 +117,7 @@ function rec_proc(s){
         `;
         if(true)ret+=`<div class="article">`+tt+`</div>`;
         else ret+=tt;
-        if(bookht!="")ret+=`<nav id="table-content">`+bookht+`</nav>`;
+        ret+=`<nav id="table-content">`+bookht+`</nav>`;
         ret+=`
 <div id="gitalk-container" class="container"></div>`;
 	ret+=`
@@ -167,8 +167,8 @@ gitalk.render('gitalk-container')
         case"h4":
         case"h5":
         case"h6":{
-            bookmarx.push([JSON.parse(s[0][1]),tt]);
-            return"<a name=\"bm"+bookmarx.length+"\"></a><"+s[0]+">"+tt+"</"+s[0]+">";
+            //bookmarx.push([JSON.parse(s[0][1]),tt]);
+            return"<"+s[0]+">"+tt+"</"+s[0]+">";
         }
         case"b":{return"<strong>"+tt+"</strong>";}
         case"i":{return"<em>"+tt+"</em>";}
