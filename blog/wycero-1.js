@@ -30,3 +30,14 @@ function close_front(){
     $(".frontpage").css("opacity","0");
     setTimeout(()=>{$(".frontpage").css("display","none");},500)
 }
+$("ul>li:has(a:only-child)").addClass("link-li");
+$("ul").each((ind,elem)=>{
+    var cnt1=0;
+    var cnt2=0;
+    $(elem).children().each(()=>{cnt1++;})
+    $(elem).children(".link-li").each(()=>{cnt2++;})
+    if(cnt1==cnt2){
+        $(elem).addClass("posti-group");
+        $(elem).children().addClass("posti");
+    }
+})

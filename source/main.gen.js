@@ -129,8 +129,8 @@ const gitalk = new Gitalk({
 gitalk.render('gitalk-container')
 }
 	</script>
-    <!-- 1-800-273-8255 -->
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=518077470&auto=1&height=66" class="embed-player"></iframe>
+    <!-- 1-800-273-8255
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=518077470&auto=1&height=66" class="embed-player"></iframe>-->
 	<div id="gitalk-container"></div>
 	<footer>
         <script src="wycero-1.js"></script>
@@ -169,16 +169,16 @@ gitalk.render('gitalk-container')
             console.log("Warning: Do not use underline as it mixes up with hyperlink.");
             return tt;}
         case"del":{return"<del>"+tt+"</del>";}
-        case"url":
+        case"url":{
+            let target="";
+		    if(typeof(s[1])=="undefined")target=ttraw;else target=s[1];
+		    return"<a href=\""+target+"\">"+tt+"</a>";
+	    }
         case"urlbox":{
             let target="";
 		    if(typeof(s[1])=="undefined")target=ttraw;else target=s[1];
-		    if(s[0]=="url")return"<a href=\""+target+"\">"+tt+"</a>";
-            else return"<div class=\"posti alone\"><a href=\""+target+"\">"+tt+"</a></div>";
+		    return"<li><a href=\""+target+"\">"+tt+"</a></li>";
 	    }
-        case"ubg":{
-            return"<div class=\"posti-group\">"+tt+"</div>";
-        }
         case"quote":{
             if(typeof(s[1])=="undefined")return"<blockquote>"+tt+"</blockquote>";
             else return"<blockquote><cite>"+make_escape(s[1])+": </cite><br>"+tt+"</blockquote>";
@@ -189,6 +189,7 @@ gitalk.render('gitalk-container')
         case"frontpage":{return"<div class=\"frontpage\"><div class=\"frontpage-overlay\"><div class=\"frontpage-inner container\">"+tt+"<a class=\"primary\" onclick=\"close_front()\">Learn More</a></div></div></div>";}
         case"*":{return;}
         case"rem":{return;}
+        case"ubg":
         case"list":{
             if(typeof(s[1])=="undefined")return"<ul>"+tt+"</ul>";
             else return"<ol start=\""+s[1]+"\">"+tt+"</ol>";
